@@ -6,8 +6,7 @@
 </head>
 <body ng-app="myApp">
 <div ng-controller="myAppController as controller">
-    <h1>Username : {{user.username}}</h1>
-    <h1>Password : {{user.password}}</h1>
+    <h1>Username : {{user.name}}</h1>
 </div>
 </body>
 </html>

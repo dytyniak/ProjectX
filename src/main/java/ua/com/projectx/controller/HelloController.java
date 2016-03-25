@@ -1,21 +1,23 @@
-package controller;
+package ua.com.projectx.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
-import entity.User;
+import ua.com.projectx.entity.User;
+import ua.com.projectx.service.UserService;
 
 @RestController
+@ComponentScan(basePackages = "ua.com.projectx.service")
 public class HelloController {
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/getUser")
     public User getUser() {
-        System.out.println("I am here!");
-        User user = new User();
-        user.setUsername("dytyniak");
-        user.setPassword("123123123");
-        return user;
+        return userService.findAll().get(0);
     }
 
     @RequestMapping(value = "/")

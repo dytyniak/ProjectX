@@ -1,4 +1,4 @@
-package config;
+package ua.com.projectx.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("controller")
+@ComponentScan("ua.com.projectx.controller")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override

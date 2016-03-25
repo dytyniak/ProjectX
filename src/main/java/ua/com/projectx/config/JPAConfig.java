@@ -1,4 +1,4 @@
-package config;
+package ua.com.projectx.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("repository")
+@EnableJpaRepositories("ua.com.projectx.repository")
 @PropertySource("classpath:app.properties")
 public class JPAConfig {
 
@@ -43,7 +43,7 @@ public class JPAConfig {
         final LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setPersistenceUnitName("localContainerEntityManagerFactoryBean");
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
-        localContainerEntityManagerFactoryBean.setPackagesToScan("entity");
+        localContainerEntityManagerFactoryBean.setPackagesToScan("ua/com/projectx/entity");
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
         localContainerEntityManagerFactoryBean.setJpaPropertyMap(hibernateProperties());
