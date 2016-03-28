@@ -1,11 +1,12 @@
 package ua.com.projectx.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import ua.com.projectx.security.SecurityConfig;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{JPAConfig.class};
+        return new Class<?>[]{JPAConfig.class, SecurityConfig.class};
     }
 
     @Override
