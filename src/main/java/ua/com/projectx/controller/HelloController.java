@@ -1,5 +1,7 @@
 package ua.com.projectx.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,9 @@ public class HelloController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/getUser")
-    public User getUser() {
-        return userService.findAll().get(0);
+    @RequestMapping(value = "/getUsers")
+    public List<User> getUsers() {
+        return userService.findAll();
     }
 
     @RequestMapping(value = "/")
