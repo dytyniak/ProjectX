@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 
 @Entity
 public class Role extends AbstractPersistable<Integer> {
-    private String name;
+	private static final long serialVersionUID = -5814215338123068253L;
+
+	private String name;
 
     public String getName() {
         return name;

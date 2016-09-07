@@ -5,7 +5,6 @@
     <artifactId>dytyniak</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <login>dytyniak Maven Webapp</login>
     <url>http://maven.apache.org</url>
 
 

@@ -7,9 +7,11 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class User extends AbstractPersistable<Integer> {
+	private static final long serialVersionUID = 7293934165900486712L;
 
-    private String login;
-    private String password;
+	private String login;
+    
+	private String password;
 
     @ManyToOne
     private Role role;
