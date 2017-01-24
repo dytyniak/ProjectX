@@ -27,13 +27,12 @@ public class AuthenticationController {
 	}
 /*
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public boolean register(@RequestBody User user) {
-		if (userService.findByUsername(user.getUsername()) != null) {
+	public boolean register(@RequestBody Director director) {
+		if (directorService.findByUsername(director.getUsername()) != null) {
 			return true;
 		}
-		user.setRole(roleService.findByName(ROLE_USER));
-		userService.save(user);
+		directorService.save(director);
 		return false;
-	}*/
-
+	}
+*/
 }

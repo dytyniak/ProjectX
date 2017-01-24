@@ -30,4 +30,9 @@ public class DirectorServiceImpl implements DirectorService{
 		return directorRepository.findByUsername(username);
 	}
 
+    @Override
+    public void save(Director director) {
+        directorRepository.save(director);
+    }
+
 }

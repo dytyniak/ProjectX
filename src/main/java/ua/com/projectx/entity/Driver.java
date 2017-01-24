@@ -2,8 +2,10 @@ package ua.com.projectx.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -19,6 +21,11 @@ public class Driver extends AbstractPersistable<Integer> {
     @ManyToOne
 	@JoinColumn(name="automotiveEnterprice_id")
     private AutomotiveEnterprice automotiveEnterprice;
+
+    @ManyToOne
+    @JoinColumn(name="route_id")
+    @JsonBackReference
+    private Route route;
 
     public String getLatitude() {
         return latitude;
@@ -58,5 +65,13 @@ public class Driver extends AbstractPersistable<Integer> {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

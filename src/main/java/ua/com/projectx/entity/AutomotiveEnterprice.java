@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -74,7 +75,21 @@ public class AutomotiveEnterprice extends AbstractPersistable<Long> {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
+
+
+	public List<Driver> getRoutes() {
+		return routes;
+	}
+
+	public void setRoutes(List<Driver> routes) {
+		this.routes = routes;
+	}
+
+	public List<Driver> getDrivers() {
+		return drivers;
+	}
+
+	public void setDrivers(List<Driver> drivers) {
+		this.drivers = drivers;
+	}
 }

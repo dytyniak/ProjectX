@@ -21,7 +21,13 @@ public class RouteController {
 	private RouteService routeService;
 	
 	@RequestMapping(value = "/route/{name}")
-	public List<Route> getDrivers(@PathVariable String name) {
+	public List<Route> getRoute(@PathVariable String name) {
 		return routeService.findByName(name);
 	}
+
+	@RequestMapping(value = "/routeByDirector/{directorUsername}")
+	public List<Route> getRouteByDirector(@PathVariable String directorUsername) {
+		return routeService.findByDirectorUsername(directorUsername);
+	}
+
 }
