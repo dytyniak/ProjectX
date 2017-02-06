@@ -6,6 +6,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -18,6 +19,9 @@ public class Driver extends AbstractPersistable<Integer> {
     private String lastName;
     private String longitude;
     private String latitude;
+    private String machineId;
+    @Transient
+    private byte[] image;
     @ManyToOne
 	@JoinColumn(name="automotiveEnterprice_id")
     private AutomotiveEnterprice automotiveEnterprice;
@@ -73,5 +77,21 @@ public class Driver extends AbstractPersistable<Integer> {
 
     public void setRoute(Route route) {
         this.route = route;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getMachineId() {
+        return machineId;
+    }
+
+    public void setMachineId(String machineId) {
+        this.machineId = machineId;
     }
 }

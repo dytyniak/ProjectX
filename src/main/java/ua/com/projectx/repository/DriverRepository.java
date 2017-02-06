@@ -7,5 +7,5 @@ import ua.com.projectx.entity.Driver;
 
 @Repository
 public interface DriverRepository extends JpaRepository<Driver, Integer> {
-
+    Driver findByUsername(String username);
 }

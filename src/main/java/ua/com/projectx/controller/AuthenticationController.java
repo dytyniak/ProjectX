@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.com.projectx.entity.Director;
 import ua.com.projectx.service.DirectorService;
 
+import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "http://192.168.137.46"})
@@ -25,6 +30,7 @@ public class AuthenticationController {
 		System.out.println(director.getUsername() + " " + director.getPassword());
 		return directorService.findByUsernameAndPassword(director.getUsername(), director.getPassword()) != null;
 	}
+
 /*
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public boolean register(@RequestBody Director director) {

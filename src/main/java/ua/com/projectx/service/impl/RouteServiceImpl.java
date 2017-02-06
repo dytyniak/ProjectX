@@ -1,12 +1,19 @@
 package ua.com.projectx.service.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import ua.com.projectx.entity.AutomotiveEnterprice;
 import ua.com.projectx.entity.Director;
+import ua.com.projectx.entity.Driver;
 import ua.com.projectx.entity.Route;
 import ua.com.projectx.repository.RouteRepository;
 import ua.com.projectx.service.AutomotiveEnterpriceService;
@@ -39,6 +46,18 @@ public class RouteServiceImpl implements RouteService{
     public List<Route> findByDirectorUsername(String directorUsername) {
         Director director = directorService.findByUsername(directorUsername);
         AutomotiveEnterprice automotiveEnterprice = director.getAutomotiveEnterprice();
-        return routeRepository.findByAutomotiveEnterprice(automotiveEnterprice);
+        List<Route> routes = routeRepository.findByAutomotiveEnterprice(automotiveEnterprice);
+        routes.forEach(r->r.getDrivers().forEach(this::populateImage));
+        return routes;
+    }
+
+    private void populateImage(Driver driver) {
+        try {
+            Resource res = new ClassPathResource("/assets/images/"+ driver.getUsername() + ".png");
+            Path path = res.exists() ? res.getFile().toPath() : new ClassPathResource("/assets/images/default.png").getFile().toPath();
+            driver.setImage(Files.readAllBytes(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -20,4 +20,9 @@ public class DriverServiceImpl implements DriverService{
 		return driverRepository.findAll();
 	}
 
+	@Override
+	public Driver findByUsername(String username) {
+		return driverRepository.findByUsername(username);
+	}
+
 }
